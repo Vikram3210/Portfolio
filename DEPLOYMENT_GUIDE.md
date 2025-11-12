@@ -92,8 +92,9 @@ This guide will help you deploy your portfolio application to free hosting platf
    - Configure:
      - **Name:** `portfolio-backend`
      - **Environment:** `Node`
-     - **Build Command:** `cd server && npm install`
-     - **Start Command:** `cd server && node index.js`
+     - **Root Directory:** `server` ⚠️ **IMPORTANT: Set this!**
+     - **Build Command:** `npm install` (leave empty or use this)
+     - **Start Command:** `npm start` (or `node index.js`)
      - **Plan:** Free
    - Add Environment Variables:
      - `NODE_ENV` = `production`

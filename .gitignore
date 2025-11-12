@@ -12,10 +12,18 @@ dist
 dist-ssr
 *.local
 
-# Environment variables
+# Environment variables - NEVER COMMIT THESE!
 .env
+.env.*
+!.env.example
+*.env
 .env.local
+.env.development
 .env.production
+.env.test
+.env.staging
+server/.env
+server/.env.*
 
 # Editor directories and files
 .vscode/*

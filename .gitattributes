@@ -1,0 +1,6 @@
+# Prevent accidental commits of sensitive files
+*.env filter=git-crypt diff=git-crypt
+*.env.* filter=git-crypt diff=git-crypt
+server/.env filter=git-crypt diff=git-crypt
+server/.env.* filter=git-crypt diff=git-crypt
+

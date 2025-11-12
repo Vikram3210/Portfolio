@@ -59,6 +59,14 @@ app.use((err, req, res, next) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-  console.log(`MongoDB URI: ${process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio'}`);
+  // Don't log sensitive information like MongoDB URI
+  const mongoURI = process.env.MONGODB_URI;
+  if (mongoURI) {
+    // Mask the connection string for security
+    const maskedURI = mongoURI.replace(/\/\/([^:]+):([^@]+)@/, '//$1:***@');
+    console.log(`MongoDB: Connected to ${maskedURI.split('@')[1] || 'database'}`);
+  } else {
+    console.log(`MongoDB: Using default local connection`);
+  }
 });
 
