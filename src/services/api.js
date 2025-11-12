@@ -9,7 +9,7 @@ const getApiBaseUrl = () => {
   }
   // In production, try to use environment variable or fallback
   // This will be set by the hosting platform
-  return import.meta.env.VITE_API_URL || 'https://your-backend-url.onrender.com/api';
+  return import.meta.env.VITE_API_URL || 'https://portfolio-k8jz.onrender.com/api';
 };
 
 const API_BASE_URL = getApiBaseUrl();

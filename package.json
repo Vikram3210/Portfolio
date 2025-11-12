@@ -46,7 +46,6 @@
     "electron-builder": "^25.1.8",
     "wait-on": "^8.0.0"
   },
-  "main": "electron/main.js",
   "build": {
     "appId": "com.vikram.portfolio",
     "productName": "Portfolio",

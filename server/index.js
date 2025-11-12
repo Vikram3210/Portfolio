@@ -7,7 +7,20 @@ import userRoutes from './routes/userRoutes.js';
 import projectRoutes from './routes/projectRoutes.js';
 
 // Load environment variables
-dotenv.config();
+// Try to load from server/.env first, then fall back to root .env
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { existsSync } from 'fs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Check if server/.env exists, otherwise use root .env
+const envPath = existsSync(join(__dirname, '.env')) 
+  ? join(__dirname, '.env')
+  : join(__dirname, '..', '.env');
+
+dotenv.config({ path: envPath });
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -19,7 +32,11 @@ connectDB().catch(err => {
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: [
+    process.env.FRONTEND_URL || 'http://localhost:5173',
+    'https://portfolio-two-azure-92.vercel.app',
+    'https://portfolio-frontend.vercel.app'
+  ],
   credentials: true
 }));
 app.use(express.json());

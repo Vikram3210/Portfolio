@@ -92,10 +92,17 @@ This guide will help you deploy your portfolio application to free hosting platf
    - Configure:
      - **Name:** `portfolio-backend`
      - **Environment:** `Node`
-     - **Root Directory:** `server` ⚠️ **IMPORTANT: Set this!**
-     - **Build Command:** `npm install` (leave empty or use this)
+     - **Root Directory:** `server` ⚠️ **CRITICAL: Must set this to `server`!**
+     - **Build Command:** `npm install` (or leave empty)
      - **Start Command:** `npm start` (or `node index.js`)
      - **Plan:** Free
+   
+   **⚠️ IMPORTANT:** If you already created the service and it's failing:
+   - Go to your service → **Settings**
+   - Scroll to **Root Directory**
+   - Change it from empty/root to: `server`
+   - Click **Save Changes**
+   - Go to **Manual Deploy** → **Deploy latest commit**
    - Add Environment Variables:
      - `NODE_ENV` = `production`
      - `PORT` = `10000` (Render uses this port)
