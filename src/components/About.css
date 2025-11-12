@@ -1,0 +1,148 @@
+.about-section {
+  padding: 4rem 0;
+  background: linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  min-height: 100vh;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.about-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.about-bio {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.about-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.about-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.about-social .btn {
+  min-width: 140px;
+  font-weight: 600;
+  border-width: 2px;
+  transition: all 0.2s ease;
+}
+
+.about-social .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.education-section,
+.experience-section {
+  margin-top: 5rem;
+}
+
+.section-heading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.education-list,
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.education-item,
+.experience-item {
+  background: var(--bg-primary);
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 5px solid var(--primary-color);
+  box-shadow: var(--shadow-md);
+  border: 2px solid var(--border-color);
+  border-left: 5px solid var(--primary-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.education-item:hover,
+.experience-item:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateX(6px);
+  border-color: var(--primary-color);
+}
+
+.education-degree,
+.experience-position {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.education-institution,
+.experience-company {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.education-field,
+.experience-location {
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.education-dates,
+.experience-dates {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.education-description,
+.experience-description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.experience-responsibilities {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.experience-responsibilities li {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+

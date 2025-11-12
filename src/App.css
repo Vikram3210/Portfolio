@@ -1,0 +1,19 @@
+/* App-specific styles */
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Remove default margins and ensure full width */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure containers work properly */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
