@@ -7,9 +7,8 @@ const getApiBaseUrl = () => {
   if (import.meta.env.DEV) {
     return '/api';
   }
-  // In production, try to use environment variable or fallback
-  // This will be set by the hosting platform
-  return import.meta.env.VITE_API_URL || 'https://portfolio-k8jz.onrender.com/api';
+  // In production, use the Render backend URL
+  return 'https://portfolio-k8jz.onrender.com/api';
 };
 
 const API_BASE_URL = getApiBaseUrl();
@@ -46,7 +45,11 @@ const authFetch = async (url, options = {}) => {
   } catch (error) {
     // Handle network errors
     if (error.name === 'TypeError' && error.message.includes('fetch')) {
-      throw new Error('Cannot connect to server. Please make sure the backend server is running on port 5001.');
+      // Check if it's a CORS error or network error
+      if (error.message.includes('CORS') || error.message.includes('Failed to fetch')) {
+        throw new Error('Cannot connect to backend server. The server may be starting up (Render free tier takes ~30 seconds to wake up). Please try again in a moment.');
+      }
+      throw new Error('Network error: Cannot connect to server. Please check your internet connection and try again.');
     }
     throw error;
   }
