@@ -1,13 +1,18 @@
 // Use VITE_API_URL if set, otherwise use proxy in dev or full URL in production
 const getApiBaseUrl = () => {
   if (import.meta.env.VITE_API_URL) {
+    console.log(`Returning from VITE_API_URL: ${import.meta.env.VITE_API_URL}`);
     return import.meta.env.VITE_API_URL;
   }
+  
   // In development, use proxy (relative path)
   if (import.meta.env.DEV) {
-    return '/api';
+    console.log(`Returning proxy URL: /api`);
+    return '/api'; // Proxy should be set up in Vite config (vite.config.js)
   }
+  
   // In production, use the Render backend URL
+  console.log(`Returning production URL: https://portfolio-k8jz.onrender.com/api`);
   return 'https://portfolio-k8jz.onrender.com/api';
 };
 
@@ -34,6 +39,7 @@ const authFetch = async (url, options = {}) => {
     const response = await fetch(url, {
       ...options,
       headers,
+      credentials: 'include', // Ensure credentials (cookies or tokens) are sent with requests
     });
 
     if (!response.ok) {
@@ -67,6 +73,7 @@ export const authAPI = {
 
   // Login
   login: async (email, password) => {
+    console.log(`Sending request at: ${API_BASE_URL}/auth/login`);
     return authFetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
       body: JSON.stringify({ email, password }),
