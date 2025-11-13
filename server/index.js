@@ -31,14 +31,52 @@ connectDB().catch(err => {
 });
 
 // Middleware
-app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL || 'http://localhost:5173',
-    'https://portfolio-two-azure-92.vercel.app',
-    'https://portfolio-frontend.vercel.app'
-  ],
-  credentials: true
-}));
+// Middleware
+// app.use(cors({
+//   origin: [
+//     process.env.FRONTEND_URL || 'http://localhost:5173',
+//     'https://portfolio-two-azure-92.vercel.app',
+//     'https://portfolio-frontend.vercel.app'
+//   ],
+//   credentials: true
+// }));
+
+const allowedBaseDomains = [
+  'portfolio-two-azure-92.vercel.app',
+  'www.portfolio-two-azure-92.vercel.app',
+  'localhost'
+];
+
+// Helper to check if the request origin is allowed
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true; // Allow requests like Postman / server-to-server
+  try {
+    const url = new URL(origin);
+    const hostname = url.hostname;
+
+    // ✅ Allow from known base domains
+    if (allowedBaseDomains.includes(hostname)) return true;
+
+    // ✅ Allow any preview subdomain from Vercel ending with 'vercel.app'
+    if (hostname.endsWith('vercel.app') && hostname.includes('project-mate')) {
+      return true;
+    }
+
+    return false;
+  } catch (err) {
+    return false;
+  }
+};
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (isAllowedOrigin(origin)) callback(null, true);
+      else callback(new Error('Not allowed by CORS'));
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
